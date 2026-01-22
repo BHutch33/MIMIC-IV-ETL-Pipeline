@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 import logging
 
-RAW_PATH = "admissions.csv"
+RAW_PATH = "C:/Users/goyam/AppData/Local/Temp/4f713ad6-2f4e-4e99-8152-b9399c067894_admissions.csv.gz.admissions.csv.gz/admissions.csv"
 OUTPUT_PATH = "admissions.parquet"
 
 # This file will be used to test the ingestion and Schema-First design of the admissions.csv.gz data
@@ -74,35 +74,25 @@ def transform(df: pd.DataFrame) -> pd.DataFrame:
     for col in string_cols:
         df[col] = df[col].astype("string")
 
-    # 5. Derived fields (analytics-friendly)
-    df["length_of_stay_days"] = (
-        df["dischtime"] - df["admittime"]
-    ).dt.days
-
-    df["ed_length_of_stay_minutes"] = (
-        df["edouttime"] - df["edregtime"]
-    ).dt.total_seconds() / 60
-
     return df
 
 
 def load(df: pd.DataFrame, output_path: Path):
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    df.to_parquet(
-        output_path,
-        engine="pyarrow",
-        compression="snappy",
-        index=False
-    )
+    try:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        df.to_parquet(
+            output_path,
+            engine="pyarrow",
+            compression="snappy",
+            index=False
+        )
+    except Exception as e:
+        raise IOError(f"Failed to write parquet to {output_path}: {e}")
 
 # Validation function
 def validate(df: pd.DataFrame):
     if df["subject_id"].isna().any():
         logging.warning("Null subject_id values detected")
-
-    if (df["length_of_stay_days"] < 0).any():
-        logging.warning("Negative length_of_stay_days detected")
 
 
 
@@ -124,7 +114,7 @@ def main():
         validate(df_curated)
         logging.info("Validation completed")
 
-        load(df_curated, OUTPUT_PATH)
+        load(df_curated, Path(OUTPUT_PATH))
         logging.info(f"Parquet written to {OUTPUT_PATH}")
 
     except Exception as e:

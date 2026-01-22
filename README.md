@@ -1,5 +1,6 @@
+#############################
 ### MIMIC-IV-ETL-Pipeline ###
-This repository features all the code and documentation for my personal project using real MIMIC-IV medical data. AWS will be the cloud service I use to run the ETL pipeline to clean and store the messy MIMIC-IV data.
+#############################
 
 
 ### Tech Stack ###
@@ -7,7 +8,7 @@ I am using Python, SQL and AWS for this end-to-end pipeline. This project allows
 S3 and RDS. I am experienced in Python and I understand SQL queries, so combining those two skills with my newly found interest in cloud services is a rewarding crossover.
 
 
-### Schema-First ETL Design
+### Schema-First ETL Design ###
 MIMIC-IV data is messy, but that does not mean we can't fight back against that by pre-determining the schema first. Checking for expected column names, data types and nullability is a crucial step when planning out an ETL pipeline as you want to make sure that the schema you are working with is explicitly defined. Raw .csv files should be treated as untrusted, therefore all the validations, type coercion and date parsing should be handled during the transformation phase (the "T" in ETL).
 
 
