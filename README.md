@@ -13,9 +13,8 @@ MIMIC-IV data is messy, but that does not mean we can't fight back against that 
 
 
 ### Motivation / Problem to Solve ###
-Messy healthcare data is everywhere. I want to gain valuable hands on knowledge for proper extraction, meaningful transformation of the data and effective loading so that the data is usable
-downstream (Power BI, Tableua, etc.). This is a test in not only being able to orchestrate the different pieces of the ETL pipeline but to design a system that uses the tools and knowledge I have now to cleanly ingest messy, real world data. Challenging myself to build something robust with softwares that I am not 100% familiar with is the type of work that will increase my 
-data engineering skillset very quickly in a short amount of time.
+Messy healthcare data is everywhere. I want to gain valuable hands on knowledge for what proper extraction, meaningful transformation of the data and effective loading looks like. This allows me to curate data in a way that is usable
+downstream (Power BI, Tableua, Analyst Tools etc.). This is a test in not only being able to orchestrate the different pieces of the ETL pipeline but to design a system that uses the tools and knowledge I have now to cleanly ingest messy, real world data. Challenging myself to build something robust with softwares that I am not 100% familiar with is the type of work that will increase my data engineering skillset very quickly in a short amount of time.
 
 
 ### MIMIC-IV Dataset ###
