@@ -2,8 +2,8 @@ import pandas as pd
 from pathlib import Path
 import logging
 
-RAW_PATH = "C:/Users/goyam/OneDrive/Desktop/MIMIC_Pipeline/data/raw/admissions.csv"
-OUTPUT_PATH = "C:/Users/goyam/OneDrive/Desktop/MIMIC_Pipeline/data/raw/curated"
+RAW_PATH = "admissions.csv"
+OUTPUT_PATH = "admissions.parquet"
 
 # This file will be used to test the ingestion and Schema-First design of the admissions.csv.gz data
 
